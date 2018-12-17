@@ -1,36 +1,40 @@
 from bs4 import BeautifulSoup
 import requests
 
-url = 'http://animeindo.video/anime-list-animeindo/'
-page = requests.get(url, timeout=10)
+from anime_details import anime_descriptions
 
-soup = BeautifulSoup(page.text, 'html.parser')
+url_anime_list = 'http://animeindo.video/anime-list-animeindo/'
+anime_list_page = requests.get(url_anime_list)
 
-mid = soup.find_all('div', {'class': 'amin_box_mid_link'})
+soup = BeautifulSoup(anime_list_page.text, 'html.parser')
+
+content = soup.find_all('div', {'class': 'amin_box_mid_link'})
+
 
 def get_anime_list():
     try:
-        del mid[0]
-        for i in mid:
+        del content[0]
+        for i in content:
             link =  i.find_all('a', href=True)
 
-            title = i.text
-            link = link[0]['href']
-            # print('TITLE: ', title, 'LINK: ', link)
+            try:
+                link = link[0]['href']
+                if link == 'href=':
+                    link = 'URL IS EMPTY'
+            except IndexError:
+                link = 'URL NOT FOUND'
+                continue
 
-            title_and_link = {
-                'title': title,
-                'link': link
-            }
-
-            print(title_and_link)
+            try:
+                url_anime_details = requests.get(link)
+                anime_descriptions(url_anime_details)
+            except:
+                continue
 
     except Exception as e:
         print('Exception', e)
 
-
 get_anime_list()
-
 
 
 
