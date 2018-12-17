@@ -12,15 +12,26 @@ def get_anime_list():
     try:
         del mid[0]
         for i in mid:
-            anime_list = {
-                'title': i.text,
-                'link:': i
+            link =  i.find_all('a', href=True)
+
+            title = i.text
+            link = link[0]['href']
+            # print('TITLE: ', title, 'LINK: ', link)
+
+            title_and_link = {
+                'title': title,
+                'link': link
             }
-            print(anime_list)
+
+            print(title_and_link)
+
     except Exception as e:
         print('Exception', e)
 
+
 get_anime_list()
+
+
 
 
 
