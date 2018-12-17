@@ -36,6 +36,3 @@ def get_anime_list():
 
 get_anime_list()
 
-
-
-

@@ -8,5 +8,3 @@ def anime_descriptions(url_anime_details):
 
     episode_list = anime_description_page.find('div', {'class': 'episode_list'})
 
-
-
