@@ -2,22 +2,26 @@ from bs4 import BeautifulSoup
 import requests
 
 
-url = 'http://animeindo.video'
-page = requests.get(url)
+url = 'http://animeindo.video/anime-list-animeindo'
+page = requests.get(url, timeout=10)
 
 soup = BeautifulSoup(page.text, 'html.parser')
 
-# left_column = soup.find('div', {'id': 'episodes'})
+mid = soup.find_all('div', {'class': 'amin_box_mid_link'})
+del mid[0]
+
+def get_anime_list():
+    try:
+        for i in mid:
+            anime_list = {
+                'title': i.text,
+                'link:': i
+            }
+            print(anime_list)
+    except:
+        print('Exception')
+
+get_anime_list()
 
 
-episodes = soup.find('div', {'id': 'episodes'})
-episode = episodes.find_all('div', {'class': 'episode'}, recursive=False)
 
-for i in episode:
-    # print(('=====' * 35), '\n', i)
-    for img_and_a in i:
-        a = img_and_a.find('a')
-        images = img_and_a.find('img')
-        a_href = img_and_a.find('a href')
-        print(('=====' * 35), '\n', a)
-        # print(('=====' * 35), '\n', a_href)
