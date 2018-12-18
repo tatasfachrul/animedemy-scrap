@@ -1,3 +1,4 @@
+import json
 from bs4 import BeautifulSoup
 import requests
 
@@ -5,13 +6,15 @@ from anime_details import anime_descriptions
 
 url_anime_list = 'http://animeindo.video/anime-list-animeindo/'
 anime_list_page = requests.get(url_anime_list)
-
 soup = BeautifulSoup(anime_list_page.text, 'html.parser')
-
-content = soup.find_all('div', {'class': 'amin_box_mid_link'})
 
 
 def get_anime_list():
+
+    content = soup.find_all('div', {'class': 'amin_box_mid_link'})
+
+    out_list = []
+
     try:
         del content[0]
         for i in content:
@@ -33,6 +36,7 @@ def get_anime_list():
 
     except Exception as e:
         print('Exception', e)
+
 
 get_anime_list()
 
