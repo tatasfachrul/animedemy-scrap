@@ -37,6 +37,3 @@ def get_anime_list():
     except Exception as e:
         print('Exception', e)
 
-
-get_anime_list()
-

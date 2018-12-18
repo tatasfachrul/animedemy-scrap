@@ -4,6 +4,8 @@ from datetime import datetime
 
 start_time = datetime.now()
 
+
+
 def anime_descriptions(url_anime_details):
     anime_description_page = BeautifulSoup(url_anime_details.text, 'html.parser')
     title = anime_description_page.find('div', {'class': 'amin_week_box_up1'})
@@ -22,6 +24,20 @@ def anime_descriptions(url_anime_details):
     data = dict(field.split(':') for field in descriptions.find_all(text=pattern))
     # data['Synopsis'] = descriptions.find('p', text="Synopsis:").find_next_sibling("p").get_text()
 
-
     # print('Time execution: ', datetime.now() - start_time)
+
+    episode_list_parent = anime_description_page.find('div', {'class': 'desc_box_mid'})
+    episode_list_children = episode_list_parent.find_all('div', {'class': 'episode_list'})
+
+
+    for i in episode_list_children:
+        print(i.a.get('href'))
+
+
+
+
+
+
+
+
 
