@@ -1,0 +1,26 @@
+[INFO  - 2018-12-19T10:22:13.660Z] GhostDriver - Main - running on port 54095
+[INFO  - 2018-12-19T10:22:14.120Z] Session [f4004240-0377-11e9-b78a-65137d6cd62e] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-12-19T10:22:14.120Z] Session [f4004240-0377-11e9-b78a-65137d6cd62e] - page.customHeaders:  - {}
+[INFO  - 2018-12-19T10:22:14.120Z] Session [f4004240-0377-11e9-b78a-65137d6cd62e] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-12-19T10:22:14.120Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: f4004240-0377-11e9-b78a-65137d6cd62e
+[ERROR - 2018-12-19T10:22:17.125Z] Session [f4004240-0377-11e9-b78a-65137d6cd62e] - page.onError - msg: Unhandled promise rejection TypeError: undefined is not an object (evaluating 'n.on')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-12-19T10:22:17.125Z] Session [f4004240-0377-11e9-b78a-65137d6cd62e] - page.onError - stack:
+  (anonymous function) (https://assets.billboard.com/assets/1544728669/js/home.bundle.js?e5261e8a0999849f9cef:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-12-19T10:22:18.562Z] Session [f4004240-0377-11e9-b78a-65137d6cd62e] - page.onError - msg: Unhandled promise rejection Web push settings not configured on MoEngage dashboard: https://app.moengage.com
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-12-19T10:22:18.562Z] Session [f4004240-0377-11e9-b78a-65137d6cd62e] - page.onError - stack:
+  (anonymous function) (https://assets.billboard.com/assets/1544728669/js/home.bundle.js?e5261e8a0999849f9cef:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-12-19T10:22:22.020Z] Session [f4004240-0377-11e9-b78a-65137d6cd62e] - page.onError - msg: VIDEOJS: ERROR: videojs-contrib-ads has not seen a loadstart event 5 seconds after being initialized, but a source is present. This indicates that videojs-contrib-ads was initialized too late. It must be initialized immediately after video.js in the same tick. As a result, some ads will not play and some media events will be incorrect. For more information, see https://github.com/videojs/videojs-contrib-ads#important-note-about-initialization
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-12-19T10:22:22.020Z] Session [f4004240-0377-11e9-b78a-65137d6cd62e] - page.onError - stack:
+  apply (:0)
+
+  phantomjs://platform/console++.js:263 in error

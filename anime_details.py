@@ -1,9 +1,8 @@
 import re
 from bs4 import BeautifulSoup
 from datetime import datetime
-
+import requests
 start_time = datetime.now()
-
 
 
 def anime_descriptions(url_anime_details):
@@ -31,9 +30,15 @@ def anime_descriptions(url_anime_details):
 
 
     for i in episode_list_children:
-        print(i.a.get('href'))
+        link_to_video =  i.a.get('href')
 
 
+        url_videos = requests.get(link_to_video)
+        # print(url_videos)
+        video_link = BeautifulSoup(url_videos.text, 'html.parser')
+
+        video_on_iframe = video_link.find('iframe', width=640, height=380)
+        print(video_on_iframe)
 
 
 

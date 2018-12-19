@@ -1,11 +1,11 @@
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+options = webdriver.ChromeOptions()
+options.add_extension('./AdBlock_v3.36.0.crx')
 
-html = '''
-<a href="http://something" title="Development of the Python language and website">Core Development</a>
-<a href="http://something.com" title="Development of the Python language and website">Core Development</a>
-'''
 
-soup = BeautifulSoup(html)
+driver = webdriver.Chrome(chrome_options=options)
+driver.get("https://rainymood.com/")
 
-for a in soup.find_all('a', href=True):
-    print(a['href'])
+
+driver.find_element_by_css_selector('.play').click()
