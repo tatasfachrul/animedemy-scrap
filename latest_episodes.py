@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import threading
 import re
 import requests
-
+import csv
 import time
 start = time.time()
 
@@ -46,6 +46,7 @@ def get_anime_list():
 
 DATA = []
 TITLE = []
+URL_VIDEOS = []
 URL_VIDEO = []
 IMAGE = None
 DESCRIPTIONS = None
@@ -53,10 +54,10 @@ SYNOPSIS = None
 
 object_videos_url = {}
 
-def anime_descriptions(url_anime_details, ):
+def anime_descriptions(url_anime_details):
 
     global anime_description_page, title, episode_list_parent, episode_list_children, \
-        link_to_video, url_videos, video_link, video_on_iframe, URL_VIDEO, image, images, \
+        link_to_video, url_videos, video_link, video_on_iframe, URL_VIDEOS, image, images, \
         IMAGE, soup, description, data_descriptions, time_execution, data_sinopsis
 
     anime_description_page = BeautifulSoup(url_anime_details.text, 'html.parser')
@@ -68,23 +69,6 @@ def anime_descriptions(url_anime_details, ):
     TITLE = title
 
     # episode_list = anime_description_page.find('div', {'class': 'episode_list'})
-
-    episode_list_parent = anime_description_page.find('div', {'class': 'desc_box_mid'})
-    episode_list_children = episode_list_parent.find_all('div', {'class': 'episode_list'})
-
-
-    for i in episode_list_children:
-        link_to_video = i.a.get('href')
-
-        url_videos = requests.get(link_to_video)
-
-        video_link = BeautifulSoup(url_videos.text, 'html.parser')
-
-        video_on_iframe = video_link.find('iframe', allow='encrypted-media' == False)
-
-        if video_on_iframe is not None:
-            URL_VIDEO = video_on_iframe['src']
-
 
 
     image = anime_description_page.find('div', {'class': 'cat_image'})
@@ -113,26 +97,50 @@ def anime_descriptions(url_anime_details, ):
 
     DESCRIPTIONS = data_descriptions
 
+    #=================================================================================================
+    episode_list_parent = anime_description_page.find('div', {'class': 'desc_box_mid'})
+    episode_list_children = episode_list_parent.find_all('div', {'class': 'episode_list'})
+
+    for i in episode_list_children:
+        link_to_video = i.a.get('href')
+
+        url_videos = requests.get(link_to_video)
+
+        video_link = BeautifulSoup(url_videos.text, 'html.parser')
+
+        video_on_iframe = video_link.find('iframe', allow='encrypted-media' == False)
+        if video_on_iframe is not None:
+            URL_VIDEOS = video_on_iframe['src']
+            # print(URL_VIDEOS)
+    # URL_VIDEO.append(URL_VIDEOS)
+    #         print(URL_VIDEOS)
+    #=================================================================================================
+
     DATA = [
         TITLE, {
             'IMAGES': IMAGE,
-            'URL_VIDEO': URL_VIDEO,
+            'URL_VIDEOS': URL_VIDEOS,
             'DESCRIPTIONS': DESCRIPTIONS,
             'SYNOPSIS': SYNOPSIS
         }
     ]
-    print(DATA)
+    # print(DATA)
 
     end = time.time()
     time_execution = 'Time execution: ', end - start
-    print(time_execution)
+    # print(time_execution)
+
+    with open('data.csv', 'w') as csv_file:
+        writer = csv.writer(csv_file)
+        for key, value in DATA.items():
+            writer.writerow([key, value])
 
 
 def process():
     t1 = threading.Thread(target=get_anime_list(), args = (content, link, url_anime_details))
     t2 = threading.Thread(target=anime_descriptions, args= (anime_description_page, title, episode_list_parent,
                                                             episode_list_children, link_to_video, url_videos, video_link,
-                                                            video_on_iframe, URL_VIDEO, image, images, IMAGE,
+                                                            video_on_iframe, URL_VIDEOS, image, images, IMAGE,
                                                             soup, description, data_descriptions, data_sinopsis, time_execution))
 
     t1.start()
