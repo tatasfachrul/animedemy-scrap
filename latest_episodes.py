@@ -130,10 +130,11 @@ def anime_descriptions(url_anime_details):
     time_execution = 'Time execution: ', end - start
     # print(time_execution)
 
-    with open('data.csv', 'w') as csv_file:
-        writer = csv.writer(csv_file)
-        for key, value in DATA.items():
-            writer.writerow([key, value])
+    with open('list.csv', 'w') as f:
+        for dict in DATA:
+            for key, value in dict.items():
+                text = key + ',' + value + '\n'
+                f.writelines(text)
 
 
 def process():
