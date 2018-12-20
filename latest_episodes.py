@@ -1,8 +1,10 @@
-import json
 from bs4 import BeautifulSoup
+import threading
+import re
 import requests
 
-from anime_details import anime_descriptions
+import time
+start = time.time()
 
 url_anime_list = 'http://animeindo.video/anime-list-animeindo/'
 anime_list_page = requests.get(url_anime_list)
@@ -11,9 +13,9 @@ soup = BeautifulSoup(anime_list_page.text, 'html.parser')
 
 def get_anime_list():
 
-    content = soup.find_all('div', {'class': 'amin_box_mid_link'})
+    global content, link, url_anime_details
 
-    out_list = []
+    content = soup.find_all('div', {'class': 'amin_box_mid_link'})
 
     try:
         del content[0]
@@ -36,4 +38,106 @@ def get_anime_list():
 
     except Exception as e:
         print('Exception', e)
+
+
+
+# =================================================================================
+
+
+DATA = []
+TITLE = []
+URL_VIDEO = []
+IMAGE = None
+DESCRIPTIONS = None
+SYNOPSIS = None
+
+object_videos_url = {}
+
+def anime_descriptions(url_anime_details, ):
+
+    global anime_description_page, title, episode_list_parent, episode_list_children, \
+        link_to_video, url_videos, video_link, video_on_iframe, URL_VIDEO, image, images, \
+        IMAGE, soup, description, data_descriptions, time_execution, data_sinopsis
+
+    anime_description_page = BeautifulSoup(url_anime_details.text, 'html.parser')
+
+
+    title = anime_description_page.find('div', {'class': 'amin_week_box_up1'})
+    title = title.text
+
+    TITLE = title
+
+    # episode_list = anime_description_page.find('div', {'class': 'episode_list'})
+
+    episode_list_parent = anime_description_page.find('div', {'class': 'desc_box_mid'})
+    episode_list_children = episode_list_parent.find_all('div', {'class': 'episode_list'})
+
+
+    for i in episode_list_children:
+        link_to_video = i.a.get('href')
+
+        url_videos = requests.get(link_to_video)
+
+        video_link = BeautifulSoup(url_videos.text, 'html.parser')
+
+        video_on_iframe = video_link.find('iframe', allow='encrypted-media' == False)
+
+        if video_on_iframe is not None:
+            URL_VIDEO = video_on_iframe['src']
+
+
+
+    image = anime_description_page.find('div', {'class': 'cat_image'})
+    images = image.find_all('img')
+
+    for i in images:
+        IMAGE = i['src']
+
+    soup = BeautifulSoup(url_anime_details.text, 'html.parser')
+
+# ===============================================================================================================================
+    # # first locate the container with the desired fields
+    description = soup.find("h3", text="Description:").find_next_sibling()
+    #
+    # get all the ":"-separated fields into a dictionary
+    pattern = re.compile(r"\w+:\s.*?")
+    #
+    data_descriptions = dict(field.split(":") for field in description.find_all(text=pattern))
+    # # data_descriptions["Synopsis"] = description.find("p", text="Synopsis:").find_next_sibling("p").get_text()
+# ===============================================================================================================================
+
+    # sinopsis = soup.find('div', text="Sinopsis:").find_next_sibling()
+    # data_sinopsis = dict(field.split(":") for field in sinopsis.find_all(text=pattern))
+    data_sinopsis = soup.find('div', {'align': 'justify'})
+    SYNOPSIS = data_sinopsis.text
+
+    DESCRIPTIONS = data_descriptions
+
+    DATA = [
+        TITLE, {
+            'IMAGES': IMAGE,
+            'URL_VIDEO': URL_VIDEO,
+            'DESCRIPTIONS': DESCRIPTIONS,
+            'SYNOPSIS': SYNOPSIS
+        }
+    ]
+    print(DATA)
+
+    end = time.time()
+    time_execution = 'Time execution: ', end - start
+    print(time_execution)
+
+
+def process():
+    t1 = threading.Thread(target=get_anime_list(), args = (content, link, url_anime_details))
+    t2 = threading.Thread(target=anime_descriptions, args= (anime_description_page, title, episode_list_parent,
+                                                            episode_list_children, link_to_video, url_videos, video_link,
+                                                            video_on_iframe, URL_VIDEO, image, images, IMAGE,
+                                                            soup, description, data_descriptions, data_sinopsis, time_execution))
+
+    t1.start()
+    t2.start()
+
+    t1.join()
+    t2.join()
 

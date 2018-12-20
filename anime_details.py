@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import requests
 
-
 start_time = datetime.now()
 
 
@@ -17,6 +16,11 @@ DESCRIPTIONS = None
 object_videos_url = {}
 
 def anime_descriptions(url_anime_details):
+
+    global anime_description_page, title, episode_list_parent, episode_list_children, \
+        link_to_video, url_videos, video_link, video_on_iframe, URL_VIDEO, image, images, \
+        IMAGE, soup, description, data_descriptions, time_execution
+
     anime_description_page = BeautifulSoup(url_anime_details.text, 'html.parser')
 
 
@@ -43,11 +47,6 @@ def anime_descriptions(url_anime_details):
         if video_on_iframe is not None:
             URL_VIDEO = video_on_iframe['src']
 
-            object_videos_url = {
-                    'URL_VIDEO': URL_VIDEO
-            }
-
-            # print(object_videos_url)
 
 
     image = anime_description_page.find('div', {'class': 'cat_image'})
@@ -65,8 +64,7 @@ def anime_descriptions(url_anime_details):
     pattern = re.compile(r"\w+:\s.*?")
 
     data_descriptions = dict(field.split(":") for field in description.find_all(text=pattern))
-    # data_descriptions["Synopsis"] = description.find("p", text="Synopsis:").find_next_sibling("p").get_text()
-    # print('Time execution: ', datetime.now() - start_time)
+    data_descriptions["Synopsis"] = description.find("p", text="Synopsis:").find_next_sibling("p").get_text()
 
     DESCRIPTIONS = data_descriptions
 
@@ -79,6 +77,5 @@ def anime_descriptions(url_anime_details):
         }
     ]
     print(DATA)
-    print('Time execution: ', datetime.now() - start_time)
-
-
+    time_execution = 'Time execution: ', datetime.now() - start_time
+    print(time_execution)
