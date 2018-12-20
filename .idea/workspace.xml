@@ -4,7 +4,6 @@
     <list default="true" id="a7ed38f1-9af5-4787-a105-8f54fcadeb7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anime_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/anime_details.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text_testing.html" beforeDir="false" afterPath="$PROJECT_DIR$/text_testing.html" afterDir="false" />
     </list>
@@ -15,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="23676" />
+    <option name="totalTimeSeconds" value="29579" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -23,40 +22,41 @@
     <session id="-1418597288">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.34" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.48" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="filename" value="9" />
-          <entry key="html" value="1" />
+          <entry key="html" value="2" />
           <entry key="json" value="5" />
           <entry key="log" value="2" />
           <entry key="md" value="2" />
-          <entry key="py" value="24" />
+          <entry key="py" value="25" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="1" />
+          <entry key="HTML" value="2" />
           <entry key="JSON" value="5" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="17" />
-          <entry key="Python" value="24" />
+          <entry key="Python" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="12" />
           <entry key="md" value="2" />
-          <entry key="py" value="7770" />
+          <entry key="py" value="8709" />
           <entry key="txt" value="30" />
         </counts>
       </usages-collector>
@@ -64,7 +64,7 @@
         <counts>
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="42" />
-          <entry key="Python" value="7769" />
+          <entry key="Python" value="8708" />
           <entry key="RegExp" value="1" />
         </counts>
       </usages-collector>
@@ -75,7 +75,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/latest_episodes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="45">
               <caret line="7" column="45" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="45" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -87,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/anime_details.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="90">
+              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -104,6 +104,15 @@
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -143,6 +152,9 @@
       <find>contains</find>
       <find>r5</find>
       <find>b-hbp-video b-uploaded</find>
+      <find>bytes</find>
+      <find>facebook_frame</find>
+      <find>iframe</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,6 +168,7 @@
         <option value="$PROJECT_DIR$/latest_episodes.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/text_testing.html" />
         <option value="$PROJECT_DIR$/testing.py" />
         <option value="$PROJECT_DIR$/anime_details.py" />
       </list>
@@ -186,6 +199,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,7 +211,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -344,10 +357,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app (1)" />
-        <item itemvalue="Python.anime_details" />
         <item itemvalue="Python.testing" />
-        <item itemvalue="Python.latest_episodes" />
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.anime_details" />
+        <item itemvalue="Python.latest_episodes" />
       </list>
     </recent_temporary>
   </component>
@@ -366,19 +379,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1366" height="740" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24944155" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18763961" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4988831" visible="true" weight="0.4136808" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4988831" visible="true" weight="0.42508143" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4988831" weight="0.33387622" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4988831" weight="0.33279222" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50111693" side_tool="true" weight="0.3306189" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -417,13 +431,6 @@
             <caret column="41" selection-start-column="41" selection-end-column="41" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/text_testing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -485,23 +492,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/latest_episodes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="45">
           <caret line="7" column="45" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="45" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/text_testing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="249" selection-start-column="213" selection-end-column="249" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -517,8 +528,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/anime_details.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="90">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

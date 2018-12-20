@@ -1,4 +1,5 @@
 import re
+
 from bs4 import BeautifulSoup
 from datetime import datetime
 import requests
@@ -37,10 +38,13 @@ def anime_descriptions(url_anime_details):
         # print(url_videos)
         video_link = BeautifulSoup(url_videos.text, 'html.parser')
 
-        video_on_iframe = video_link.find('iframe', width=640, height=380)
-        print(video_on_iframe)
+        video_on_iframe = video_link.find('iframe', allow='encrypted-media' == False)
+        # a = video_on_iframe.find('iframe')
 
+        facebook_frame = '<iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="80" scrolling="no" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAnimeindoFans%2F&amp;tabs&amp;width=280&amp;height=180&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=true&amp;show_facepile=false&amp;appId=123434497681677" style="border:none;overflow:hidden" width="280"></iframe>'
 
+        if video_on_iframe is not None:
+            print(video_on_iframe['src'])
 
 
 
