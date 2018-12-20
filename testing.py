@@ -1,7 +1,7 @@
-data = [ {'site1':'data1'}, {'site2':'data2'} ]
+import json
 
-with open ('list1.csv', 'w') as f:
-    for dict in data:
-        for key, value in dict.items():
-            text = key+','+value+'\n'
-            f.writelines(text)
+
+data = [ {'site1':'data1'}, {'site2':'data2'}, {'site2':'data2'}, {'site2':'data2'} ]
+
+with open('hasil.json', 'w') as fp:
+    json.dump(data, fp)

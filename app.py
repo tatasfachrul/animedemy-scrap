@@ -1,3 +1,6 @@
-from latest_episodes import process
+from latest_episodes import Anime
 
-process()
+A = Anime()
+B = A.process()
+
+print(B)
