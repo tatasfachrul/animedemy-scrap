@@ -6,9 +6,11 @@ import requests
 
 start_time = datetime.now()
 
-TITLE = None
-URL_VIDEO = None
-IMAGES = None
+
+DATA = []
+TITLE = []
+URL_VIDEO = []
+IMAGE = None
 DESCRIPTIONS = None
 
 
@@ -16,6 +18,8 @@ object_videos_url = {}
 
 def anime_descriptions(url_anime_details):
     anime_description_page = BeautifulSoup(url_anime_details.text, 'html.parser')
+
+
     title = anime_description_page.find('div', {'class': 'amin_week_box_up1'})
     title = title.text
 
@@ -25,6 +29,7 @@ def anime_descriptions(url_anime_details):
 
     episode_list_parent = anime_description_page.find('div', {'class': 'desc_box_mid'})
     episode_list_children = episode_list_parent.find_all('div', {'class': 'episode_list'})
+
 
     for i in episode_list_children:
         link_to_video = i.a.get('href')
@@ -42,14 +47,14 @@ def anime_descriptions(url_anime_details):
                     'URL_VIDEO': URL_VIDEO
             }
 
-            print(object_videos_url)
+            # print(object_videos_url)
 
 
     image = anime_description_page.find('div', {'class': 'cat_image'})
     images = image.find_all('img')
 
     for i in images:
-        IMAGES = i['src']
+        IMAGE = i['src']
 
     soup = BeautifulSoup(url_anime_details.text, 'html.parser')
 
@@ -65,12 +70,15 @@ def anime_descriptions(url_anime_details):
 
     DESCRIPTIONS = data_descriptions
 
-    data_json = {
-        'TITLE': TITLE,
-        'URL_VIDEO': URL_VIDEO,
-        'IMAGES': IMAGES,
-        'DESCRIPTIONS': DESCRIPTIONS
-    }
 
-    # print(data_json)
+    DATA = [
+        TITLE, {
+            'IMAGES': IMAGE,
+            'URL_VIDEO': URL_VIDEO,
+            'DESCRIPTIONS': DESCRIPTIONS
+        }
+    ]
+    print(DATA)
+    print('Time execution: ', datetime.now() - start_time)
+
 
