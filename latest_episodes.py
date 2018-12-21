@@ -117,17 +117,17 @@ class Anime():
         #         print(URL_VIDEOS)
         #=================================================================================================
 
-        DATA = [
-            TITLE, {
+        DATA = [{
+                'TITLE': TITLE,
                 'IMAGES': IMAGE,
                 'URL_VIDEOS': URL_VIDEOS,
                 'DESCRIPTIONS': DESCRIPTIONS,
                 'SYNOPSIS': SYNOPSIS
-            }
-        ]
+            }]
 
-        with open('hasil.json', 'w') as fp:
-            json.dump(DATA, fp)
+
+        # with open('result.json', 'a') as outfile:
+        #     outfile.write(json.dumps(DATA, sort_keys=True, indent=4))
 
         # print(DATA)
 
@@ -135,12 +135,13 @@ class Anime():
         time_execution = 'Time execution: ', end - start
         # print(time_execution)
 
-        # with open('list.csv', 'w') as f:
-        #     for dict in DATA:
-        #         for key, value in dict.items():
-        #             text = key + ',' + value + '\n'
-        #             f.writelines(text)
+        import csv
 
+        keys = DATA[0].keys()
+        with open('data.csv', 'a') as output_file:
+            dict_writer = csv.DictWriter(output_file, keys)
+            dict_writer.writeheader()
+            dict_writer.writerows(DATA)
 
     def process(self):
         t1 = threading.Thread(target=self.get_anime_list(), args = (content, link, url_anime_details))
