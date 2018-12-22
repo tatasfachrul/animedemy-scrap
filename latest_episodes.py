@@ -109,39 +109,41 @@ class Anime():
 
             video_link = BeautifulSoup(url_videos.text, 'html.parser')
 
-            video_on_iframe = video_link.find('iframe', allow='encrypted-media' == False)
-            if video_on_iframe is not None:
-                URL_VIDEOS = video_on_iframe['src']
-                # print(URL_VIDEOS)
-        # URL_VIDEO.append(URL_VIDEOS)
-        #         print(URL_VIDEOS)
+            video_on_frame = video_link.find_all('iframe', height='380')  ## This means I wanna scrap iframe who has height value 380 . You can also use widht.
+            link_array = []
+            for link in video_on_frame:  ## Your html has 1 iframe in video_on_frame format.
+                get_iframe_url = link['src']  ## find iframe's src
+                try:
+                    link_array.append(get_iframe_url)  ## add src into a array
+
+                except:
+                    link_array.append('Error')
+
         #=================================================================================================
 
-        DATA = [{
-                'TITLE': TITLE,
-                'IMAGES': IMAGE,
-                'URL_VIDEOS': URL_VIDEOS,
-                'DESCRIPTIONS': DESCRIPTIONS,
-                'SYNOPSIS': SYNOPSIS
-            }]
+                DATA = [{
+                    'TITLE': TITLE,
+                    'IMAGES': IMAGE,
+                    'URL_VIDEOS': link_array,
+                    'DESCRIPTIONS': DESCRIPTIONS,
+                    'SYNOPSIS': SYNOPSIS
+                }]
 
 
         # with open('result.json', 'a') as outfile:
         #     outfile.write(json.dumps(DATA, sort_keys=True, indent=4))
 
-        # print(DATA)
+                print(DATA)
 
         end = time.time()
         time_execution = 'Time execution: ', end - start
         # print(time_execution)
 
-        import csv
-
-        keys = DATA[0].keys()
-        with open('data.csv', 'a') as output_file:
-            dict_writer = csv.DictWriter(output_file, keys)
-            dict_writer.writeheader()
-            dict_writer.writerows(DATA)
+        # keys = DATA[0].keys()
+        # with open('synopsis.csv', 'a') as output_file:
+        #     dict_writer = csv.DictWriter(output_file, keys)
+        #     dict_writer.writeheader()
+        #     dict_writer.writerows(DATA)
 
     def process(self):
         t1 = threading.Thread(target=self.get_anime_list(), args = (content, link, url_anime_details))
